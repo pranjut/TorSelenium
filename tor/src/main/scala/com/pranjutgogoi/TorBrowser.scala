@@ -38,7 +38,7 @@ object TorBrowser {
     val torPath = "/home/crd/.local/share/torbrowser/tbb/x86_64/tor-browser_en-US/start-tor-browser.desktop"
     val profilePath = "/home/crd/.local/share/torbrowser/tbb/x86_64/tor-browser_en-US/Browser/TorBrowser/Data/Browser/profile.default"
 
-    val torProfileDir = new Nothing(profilePath)
+    val torProfileDir = new File(profilePath)
     val binary = new FirefoxBinary(new File(torPath))
     val torProfile = new FirefoxProfile(torProfileDir)
 
