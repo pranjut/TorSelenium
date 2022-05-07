@@ -29,10 +29,10 @@ object FirefoxBrowser {
 object TorBrowser {
   import Manager._
   import org.openqa.selenium.firefox.{FirefoxBinary, FirefoxDriver, FirefoxOptions, FirefoxProfile}
-//  /Users/bi82jb/personal_workspace/minions/drivers/geckodriver
+//  /Users/personal_workspace/minions/drivers/geckodriver
 //  WEBDRIVER_GECKO_DRIVER=System.setProperty("webdriver.firefox.marionette", ".\\geckodriver.exe")
 
-  // /Users/bi82jb/personal_workspace/TorBrowser/drivers/geckodriver
+  // /Users/personal_workspace/TorBrowser/drivers/geckodriver
   def init = {
     System.setProperty("webdriver.gecko.driver", firefoxDriverUrl)
     val torPath = "/home/crd/.local/share/torbrowser/tbb/x86_64/tor-browser_en-US/start-tor-browser.desktop"
