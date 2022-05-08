@@ -1,8 +1,9 @@
 package com.pranjutgogoi
 
-import org.openqa.selenium.firefox.{ FirefoxDriver, FirefoxOptions }
+import org.openqa.selenium.firefox.{FirefoxDriver, FirefoxOptions}
 
 import java.io.File
+import scala.util.{Failure, Success, Try}
 
 object FirefoxBrowser {
   import Manager._
@@ -45,7 +46,15 @@ object TorBrowser {
     options.setProfile(torProfile)
     options.setCapability(FirefoxOptions.FIREFOX_OPTIONS, options)
     val driver = new FirefoxDriver(options)
-    driver.get("https://www.google.com")
+    Try{
+      driver.get("https://www.google.com")
+      Thread.sleep(10 * 1000)
+    } match {
+      case Success(value) => driver.quit()
+      case Failure(exception) => driver.quit()
+    }
+
+    driver
   }
 }
 
