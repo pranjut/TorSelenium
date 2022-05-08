@@ -1,10 +1,10 @@
 package com.pranjutgogoi
 
-import scala.util.{Failure, Success, Try}
+import scala.util.{ Failure, Success, Try }
 
 object TorBrowser {
   import Manager._
-  import org.openqa.selenium.firefox.{FirefoxDriver, FirefoxOptions, FirefoxProfile}
+  import org.openqa.selenium.firefox.{ FirefoxDriver, FirefoxOptions, FirefoxProfile }
 
   def init = {
     System.setProperty("webdriver.gecko.driver", firefoxDriverUrl)
@@ -19,7 +19,7 @@ object TorBrowser {
 
     val driver = new FirefoxDriver(options)
 
-    Try{
+    Try {
       val url = s"https://duckduckgo.com/?q=zaloni+twitter&t=h_&ia=web"
       driver.get(url)
       Thread.sleep(10 * 1000)
