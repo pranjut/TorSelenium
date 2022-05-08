@@ -33,7 +33,7 @@ object TorBrowser {
   // /Users/personal_workspace/TorBrowser/drivers/geckodriver
   def init = {
     System.setProperty("webdriver.gecko.driver", firefoxDriverUrl)
-    val torPath = "/home/crd/.local/share/torbrowser/tbb/x86_64/tor-browser_en-US/start-tor-browser.desktop"
+    val torPath = "/home/crd/.local/share/torbrowser/tbb/x86_64/tor-browser_en-US/Browser/start-tor-browser"
     val profilePath = "/home/crd/.local/share/torbrowser/tbb/x86_64/tor-browser_en-US/Browser/TorBrowser/Data/Browser/profile.default"
 
     val torProfileDir = new File(profilePath)
