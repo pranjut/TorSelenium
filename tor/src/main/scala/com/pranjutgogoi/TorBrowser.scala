@@ -42,19 +42,23 @@ object TorBrowser {
     val binary = new FirefoxBinary(new File(torPath))
     val torProfile = new FirefoxProfile(torProfileDir)
     torProfile.setPreference("webdriver.load.strategy", "unstable")
-//    Try {
-//      binary.startProfile(torProfile, torProfileDir, "");
-//    } match {
-//      case Failure(ex) =>
-//        ex.printStackTrace()
-//      case Success(value) => ()
-//    }
 
+    val torOptions = new FirefoxOptions
+    torOptions.setBinary(binary)
+    torOptions.setProfile(torProfile)
+    torOptions.setCapability(FirefoxOptions.FIREFOX_OPTIONS, torOptions)
+    val tor = new FirefoxDriver(torOptions)
 
-//    val options = new FirefoxOptions
-//    options.setBinary(binary)
-//    options.setProfile(torProfile)
-//    options.setCapability(FirefoxOptions.FIREFOX_OPTIONS, options)
+    val profile = new FirefoxProfile
+    profile.setPreference("network.proxy.type", 1)
+    profile.setPreference("network.proxy.socks", "127.0.0.1")
+    profile.setPreference("network.proxy.socks_port", 9150)
+    val options = new FirefoxOptions()
+    options.setProfile(profile)
+    options.setCapability(FirefoxOptions.FIREFOX_OPTIONS, options)
+
+    val orgFirefox = new FirefoxDriver(options)
+
 //    val driver = new FirefoxDriver(options)
 //    Try{
 //      Thread.sleep(10 * 1000)
