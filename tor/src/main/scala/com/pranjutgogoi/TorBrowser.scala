@@ -1,10 +1,8 @@
 package com.pranjutgogoi
 
-import org.openqa.selenium.firefox.{FirefoxDriver, FirefoxOptions}
+import org.openqa.selenium.firefox.{ FirefoxDriver, FirefoxOptions }
 
 import java.io.File
-
-
 
 object FirefoxBrowser {
   import Manager._
@@ -28,9 +26,9 @@ object FirefoxBrowser {
 
 object TorBrowser {
   import Manager._
-  import org.openqa.selenium.firefox.{FirefoxBinary, FirefoxDriver, FirefoxOptions, FirefoxProfile}
-//  /Users/personal_workspace/minions/drivers/geckodriver
-//  WEBDRIVER_GECKO_DRIVER=System.setProperty("webdriver.firefox.marionette", ".\\geckodriver.exe")
+  import org.openqa.selenium.firefox.{ FirefoxBinary, FirefoxDriver, FirefoxOptions, FirefoxProfile }
+  //  /Users/personal_workspace/minions/drivers/geckodriver
+  //  WEBDRIVER_GECKO_DRIVER=System.setProperty("webdriver.firefox.marionette", ".\\geckodriver.exe")
 
   // /Users/personal_workspace/TorBrowser/drivers/geckodriver
   def init = {
