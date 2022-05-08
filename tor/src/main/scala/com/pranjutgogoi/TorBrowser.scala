@@ -5,6 +5,8 @@ import org.openqa.selenium.firefox.{FirefoxDriver, FirefoxOptions}
 import java.io.File
 import scala.util.{Failure, Success, Try}
 import java.util.concurrent.TimeUnit
+import scala.concurrent.Future
+import scala.concurrent.ExecutionContext.Implicits.global
 
 object FirefoxBrowser {
   import Manager._
@@ -48,7 +50,7 @@ object TorBrowser {
     torOptions.setProfile(torProfile)
     torOptions.setCapability(FirefoxOptions.FIREFOX_OPTIONS, torOptions)
     Try{
-    val tor = new FirefoxDriver(torOptions)
+    Future(new FirefoxDriver(torOptions))
     } match {
       case _ => println("Just starting might get failed")
     }
@@ -65,7 +67,8 @@ object TorBrowser {
     Try{
       Thread.sleep(10 * 1000)
 //      driver.manage.timeouts.implicitlyWait(30, TimeUnit.SECONDS)
-      driver.get("https://www.google.com")
+val url = s"https://duckduckgo.com/?q=zaloni+twitter&t=h_&ia=web"
+      driver.get(url)
       Thread.sleep(10 * 1000)
     } match {
       case Success(value) => driver.quit()
