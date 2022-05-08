@@ -4,6 +4,7 @@ import org.openqa.selenium.firefox.{FirefoxDriver, FirefoxOptions}
 
 import java.io.File
 import scala.util.{Failure, Success, Try}
+import java.util.concurrent.TimeUnit
 
 object FirefoxBrowser {
   import Manager._
@@ -47,7 +48,7 @@ object TorBrowser {
     options.setCapability(FirefoxOptions.FIREFOX_OPTIONS, options)
     val driver = new FirefoxDriver(options)
     Try{
-      import java.util.concurrent.TimeUnit
+      Thread.sleep(10 * 1000)
       driver.manage.timeouts.implicitlyWait(30, TimeUnit.SECONDS)
       driver.get("https://www.google.com")
       Thread.sleep(10 * 1000)
