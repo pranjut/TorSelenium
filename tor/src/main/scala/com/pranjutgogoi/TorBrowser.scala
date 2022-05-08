@@ -47,8 +47,11 @@ object TorBrowser {
     torOptions.setBinary(binary)
     torOptions.setProfile(torProfile)
     torOptions.setCapability(FirefoxOptions.FIREFOX_OPTIONS, torOptions)
+    Try{
     val tor = new FirefoxDriver(torOptions)
-
+    } match {
+      case _ => println("Just starting might get failed")
+    }
     val profile = new FirefoxProfile
     profile.setPreference("network.proxy.type", 1)
     profile.setPreference("network.proxy.socks", "127.0.0.1")
