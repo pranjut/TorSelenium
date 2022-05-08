@@ -51,7 +51,7 @@ object TorBrowser {
     torOptions.setCapability(FirefoxOptions.FIREFOX_OPTIONS, torOptions)
     Try{
       Future(new FirefoxDriver(torOptions))
-      Thread.sleep(2 * 1000)
+      Thread.sleep(5 * 1000)
     } match {
       case _ => println("Just starting might get failed")
     }
