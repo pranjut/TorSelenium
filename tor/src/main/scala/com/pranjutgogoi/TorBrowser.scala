@@ -57,20 +57,19 @@ object TorBrowser {
     options.setProfile(profile)
     options.setCapability(FirefoxOptions.FIREFOX_OPTIONS, options)
 
-    val orgFirefox = new FirefoxDriver(options)
+    val driver = new FirefoxDriver(options)
 
-//    val driver = new FirefoxDriver(options)
-//    Try{
-//      Thread.sleep(10 * 1000)
+    Try{
+      Thread.sleep(10 * 1000)
 //      driver.manage.timeouts.implicitlyWait(30, TimeUnit.SECONDS)
-//      driver.get("https://www.google.com")
-//      Thread.sleep(10 * 1000)
-//    } match {
-//      case Success(value) => driver.quit()
-//      case Failure(exception) => driver.quit()
-//    }
-//
-//    driver
+      driver.get("https://www.google.com")
+      Thread.sleep(10 * 1000)
+    } match {
+      case Success(value) => driver.quit()
+      case Failure(exception) => driver.quit()
+    }
+
+    driver
   }
 }
 
