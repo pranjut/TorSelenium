@@ -41,23 +41,32 @@ object TorBrowser {
     val torProfileDir = new File(profilePath)
     val binary = new FirefoxBinary(new File(torPath))
     val torProfile = new FirefoxProfile(torProfileDir)
+    torProfile.setPreference("webdriver.load.strategy", "unstable")
+//    Try {
+//      binary.startProfile(torProfile, torProfileDir, "");
+//    } match {
+//      case Failure(ex) =>
+//        ex.printStackTrace()
+//      case Success(value) => ()
+//    }
 
-    val options = new FirefoxOptions
-    options.setBinary(binary)
-    options.setProfile(torProfile)
-    options.setCapability(FirefoxOptions.FIREFOX_OPTIONS, options)
-    val driver = new FirefoxDriver(options)
-    Try{
-      Thread.sleep(10 * 1000)
-      driver.manage.timeouts.implicitlyWait(30, TimeUnit.SECONDS)
-      driver.get("https://www.google.com")
-      Thread.sleep(10 * 1000)
-    } match {
-      case Success(value) => driver.quit()
-      case Failure(exception) => driver.quit()
-    }
 
-    driver
+//    val options = new FirefoxOptions
+//    options.setBinary(binary)
+//    options.setProfile(torProfile)
+//    options.setCapability(FirefoxOptions.FIREFOX_OPTIONS, options)
+//    val driver = new FirefoxDriver(options)
+//    Try{
+//      Thread.sleep(10 * 1000)
+//      driver.manage.timeouts.implicitlyWait(30, TimeUnit.SECONDS)
+//      driver.get("https://www.google.com")
+//      Thread.sleep(10 * 1000)
+//    } match {
+//      case Success(value) => driver.quit()
+//      case Failure(exception) => driver.quit()
+//    }
+//
+//    driver
   }
 }
 
