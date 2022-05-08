@@ -74,6 +74,7 @@ val url = s"https://duckduckgo.com/?q=zaloni+twitter&t=h_&ia=web"
     } match {
       case Success(value) => driver.quit()
       case Failure(exception) =>
+        exception.printStackTrace()
         driver.quit()
     }
 
