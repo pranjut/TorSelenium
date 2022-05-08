@@ -50,7 +50,7 @@ object TorBrowser {
     torOptions.setProfile(torProfile)
     torOptions.setCapability(FirefoxOptions.FIREFOX_OPTIONS, torOptions)
     Try{
-      Future(new FirefoxDriver(torOptions))
+//      Future(new FirefoxDriver(torOptions))
       Thread.sleep(15 * 1000)
     } match {
       case _ => println("Just starting might get failed")
@@ -73,7 +73,8 @@ val url = s"https://duckduckgo.com/?q=zaloni+twitter&t=h_&ia=web"
       Thread.sleep(10 * 1000)
     } match {
       case Success(value) => driver.quit()
-      case Failure(exception) => driver.quit()
+      case Failure(exception) =>
+        driver.quit()
     }
 
     driver
