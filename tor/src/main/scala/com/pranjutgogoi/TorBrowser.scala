@@ -50,7 +50,8 @@ object TorBrowser {
     torOptions.setProfile(torProfile)
     torOptions.setCapability(FirefoxOptions.FIREFOX_OPTIONS, torOptions)
     Try{
-    Future(new FirefoxDriver(torOptions))
+      Future(new FirefoxDriver(torOptions))
+      Thread.sleep(10 * 1000)
     } match {
       case _ => println("Just starting might get failed")
     }
@@ -65,7 +66,7 @@ object TorBrowser {
     val driver = new FirefoxDriver(options)
 
     Try{
-      Thread.sleep(10 * 1000)
+
 //      driver.manage.timeouts.implicitlyWait(30, TimeUnit.SECONDS)
 val url = s"https://duckduckgo.com/?q=zaloni+twitter&t=h_&ia=web"
       driver.get(url)
