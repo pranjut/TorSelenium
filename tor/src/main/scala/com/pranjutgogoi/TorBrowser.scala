@@ -1,60 +1,14 @@
 package com.pranjutgogoi
 
-import org.openqa.selenium.firefox.{FirefoxDriver, FirefoxOptions}
-
-import java.io.File
 import scala.util.{Failure, Success, Try}
-import java.util.concurrent.TimeUnit
-import scala.concurrent.Future
-import scala.concurrent.ExecutionContext.Implicits.global
-
-object FirefoxBrowser {
-  import Manager._
-  System.setProperty("webdriver.gecko.driver", firefoxDriverUrl)
-
-  def init: FirefoxDriver = {
-    val options = new FirefoxOptions()
-    implicit val driver: FirefoxDriver = new FirefoxDriver(options)
-    driver.get("about:preferences#privacy")
-    driver.findElementById("customRadio").click()
-    driver.findElementById("contentBlockingBlockCookiesCheckbox").click()
-    driver.findElementById("contentBlockingTrackingProtectionCheckbox").click()
-    driver.findElementById("contentBlockingCryptominersCheckbox").click()
-    driver.findElementById("contentBlockingFingerprintersCheckbox").click()
-    driver.findElementByClassName("reload-tabs-button").click()
-    //  driver.findElementById("doNotTrackRadioGroup").click()
-    driver.get("https://www.google.com")
-    driver
-  }
-}
 
 object TorBrowser {
   import Manager._
-  import org.openqa.selenium.firefox.{ FirefoxBinary, FirefoxDriver, FirefoxOptions, FirefoxProfile }
-  //  /Users/personal_workspace/minions/drivers/geckodriver
-  //  WEBDRIVER_GECKO_DRIVER=System.setProperty("webdriver.firefox.marionette", ".\\geckodriver.exe")
+  import org.openqa.selenium.firefox.{FirefoxDriver, FirefoxOptions, FirefoxProfile}
 
-  // /Users/personal_workspace/TorBrowser/drivers/geckodriver
   def init = {
     System.setProperty("webdriver.gecko.driver", firefoxDriverUrl)
-    val torPath = "/home/crd/.local/share/torbrowser/tbb/x86_64/tor-browser_en-US/Browser/start-tor-browser"
-    val profilePath = "/home/crd/.local/share/torbrowser/tbb/x86_64/tor-browser_en-US/Browser/TorBrowser/Data/Browser/profile.default"
 
-    val torProfileDir = new File(profilePath)
-    val binary = new FirefoxBinary(new File(torPath))
-    val torProfile = new FirefoxProfile(torProfileDir)
-    torProfile.setPreference("webdriver.load.strategy", "unstable")
-
-    val torOptions = new FirefoxOptions
-    torOptions.setBinary(binary)
-    torOptions.setProfile(torProfile)
-    torOptions.setCapability(FirefoxOptions.FIREFOX_OPTIONS, torOptions)
-    Try{
-//      Future(new FirefoxDriver(torOptions))
-      Thread.sleep(15 * 1000)
-    } match {
-      case _ => println("Just starting might get failed")
-    }
     val profile = new FirefoxProfile
     profile.setPreference("network.proxy.type", 1)
     profile.setPreference("network.proxy.socks", "127.0.0.1")
@@ -66,9 +20,7 @@ object TorBrowser {
     val driver = new FirefoxDriver(options)
 
     Try{
-
-//      driver.manage.timeouts.implicitlyWait(30, TimeUnit.SECONDS)
-val url = s"https://duckduckgo.com/?q=zaloni+twitter&t=h_&ia=web"
+      val url = s"https://duckduckgo.com/?q=zaloni+twitter&t=h_&ia=web"
       driver.get(url)
       Thread.sleep(10 * 1000)
     } match {
@@ -81,20 +33,3 @@ val url = s"https://duckduckgo.com/?q=zaloni+twitter&t=h_&ia=web"
     driver
   }
 }
-
-/*
-System.setProperty("webdriver.firefox.marionette", ".\\geckodriver.exe");
-        String torPath = "C:\\Users\\HP\\Desktop\\Tor Browser\\Browser\\firefox.exe";
-        String profilePath = "C:\\Users\\HP\\Desktop\\Tor Browser\\Browser\\TorBrowser\\Data\\Browser\\profile.default";
-
-        File torProfileDir = new File(profilePath);
-        FirefoxBinary binary = new FirefoxBinary(new File(torPath));
-        FirefoxProfile torProfile = new FirefoxProfile(torProfileDir);
-
-        FirefoxOptions options = new FirefoxOptions();
-        options.setBinary(binary);
-        options.setProfile(torProfile);
-        options.setCapability(FirefoxOptions.FIREFOX_OPTIONS,options);
-        WebDriver driver = new FirefoxDriver(options);
-
- */

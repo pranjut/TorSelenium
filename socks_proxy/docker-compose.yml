@@ -1,0 +1,11 @@
+---
+version: "2"
+
+services:
+  tor-socks-proxy:
+    container_name: tor-socks-proxy
+    image: tor-socks-proxy:prod
+    ports:
+      - "127.0.0.1:8853:53/udp"
+      - "127.0.0.1:9150:9150/tcp"
+    restart: unless-stopped
