@@ -13,36 +13,29 @@ object TorBrowser {
 
   def init = {
     System.setProperty("webdriver.gecko.driver", firefoxDriverUrl)
-    val torPath = "/home/crd/.local/share/torbrowser/tbb/x86_64/tor-browser_en-US/Browser/start-tor-browser"
-    val profilePath = "/home/crd/.local/share/torbrowser/tbb/x86_64/tor-browser_en-US/Browser/TorBrowser/Data/Browser/profile.default"
-
-    val torProfileDir = new File(profilePath)
-    val binary = new FirefoxBinary(new File(torPath))
-    val torProfile = new FirefoxProfile(torProfileDir)
-    torProfile.setPreference("webdriver.load.strategy", "unstable")
-
-    val torOptions = new FirefoxOptions
-    torOptions.setBinary(binary)
-    torOptions.setProfile(torProfile)
-    torOptions.setCapability(FirefoxOptions.FIREFOX_OPTIONS, torOptions)
-    Try{
-      Future(new FirefoxDriver(torOptions))
-      Thread.sleep(15 * 1000)
-    } match {
-      case _ => println("Just starting might get failed")
-    }
-
-
 
     val profile = new FirefoxProfile
-    profile.setPreference("network.proxy.type", 1)
-    profile.setPreference("network.proxy.socks", "127.0.0.1")
-    profile.setPreference("network.proxy.socks_port", 9150)
     val options = new FirefoxOptions()
     options.setProfile(profile)
     options.setCapability(FirefoxOptions.FIREFOX_OPTIONS, options)
 
     val driver = new FirefoxDriver(options)
+
+
+        driver.get("about:preferences#privacy")
+        driver.findElementById("customRadio").click()
+        driver.findElementById("contentBlockingBlockCookiesCheckbox").click()
+        driver.findElementById("contentBlockingTrackingProtectionCheckbox").click()
+        driver.findElementById("contentBlockingCryptominersCheckbox").click()
+        driver.findElementById("contentBlockingFingerprintersCheckbox").click()
+        driver.findElementByClassName("reload-tabs-button").click()
+
+
+    val extensionDir = extensionOnionDir
+    val extensionName = extensionOnionName
+    driver.installExtension(new File(s"${extensionDir}/${extensionName}").toPath)
+//    val extensions = driver.get("about:addons")
+//    driver.findElementByName("extension").click()
 
     Try {
 //      val url = s"https://duckduckgo.com/?q=zaloni+twitter&t=h_&ia=web"
