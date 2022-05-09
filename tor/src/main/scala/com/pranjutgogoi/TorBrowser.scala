@@ -20,9 +20,10 @@ object TorBrowser {
     val driver = new FirefoxDriver(options)
 
     Try {
-      val url = s"https://duckduckgo.com/?q=zaloni+twitter&t=h_&ia=web"
+//      val url = s"https://duckduckgo.com/?q=zaloni+twitter&t=h_&ia=web"
+      val url = s"https://www.crunchbase.com/organization/zaloni"
       driver.get(url)
-      Thread.sleep(10 * 1000)
+      Thread.sleep(3 * 1000)
     } match {
       case Success(value) => driver.quit()
       case Failure(exception) =>
