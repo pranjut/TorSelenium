@@ -1,6 +1,11 @@
 package com.pranjutgogoi
 
-import scala.util.{ Failure, Success, Try }
+import org.openqa.selenium.firefox.FirefoxBinary
+
+import java.io.File
+import scala.util.{Failure, Success, Try}
+import scala.concurrent.Future
+import scala.concurrent.ExecutionContext.Implicits.global
 
 object TorBrowser {
   import Manager._
@@ -8,6 +13,26 @@ object TorBrowser {
 
   def init = {
     System.setProperty("webdriver.gecko.driver", firefoxDriverUrl)
+    val torPath = "/home/crd/.local/share/torbrowser/tbb/x86_64/tor-browser_en-US/Browser/start-tor-browser"
+    val profilePath = "/home/crd/.local/share/torbrowser/tbb/x86_64/tor-browser_en-US/Browser/TorBrowser/Data/Browser/profile.default"
+
+    val torProfileDir = new File(profilePath)
+    val binary = new FirefoxBinary(new File(torPath))
+    val torProfile = new FirefoxProfile(torProfileDir)
+    torProfile.setPreference("webdriver.load.strategy", "unstable")
+
+    val torOptions = new FirefoxOptions
+    torOptions.setBinary(binary)
+    torOptions.setProfile(torProfile)
+    torOptions.setCapability(FirefoxOptions.FIREFOX_OPTIONS, torOptions)
+    Try{
+      Future(new FirefoxDriver(torOptions))
+      Thread.sleep(15 * 1000)
+    } match {
+      case _ => println("Just starting might get failed")
+    }
+
+
 
     val profile = new FirefoxProfile
     profile.setPreference("network.proxy.type", 1)
