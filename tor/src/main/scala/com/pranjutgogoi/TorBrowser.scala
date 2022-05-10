@@ -62,23 +62,23 @@ object TorBrowser {
 
     val driver = new FirefoxDriver(options)
 
-    driver.get("about:preferences#privacy")
-    driver.findElementById("customRadio").click()
-    driver.findElementById("contentBlockingBlockCookiesCheckbox").click()
-    driver.findElementById("contentBlockingTrackingProtectionCheckbox").click()
-    driver.findElementById("contentBlockingCryptominersCheckbox").click()
-    driver.findElementById("contentBlockingFingerprintersCheckbox").click()
-    driver.findElementByClassName("reload-tabs-button").click()
-
-    driver.findElementById("connectionSettings").click()
-    driver.switchTo().frame(1)
-    driver.findElementById("networkProxyType").findElements(By.tagName("radio")).asScala.toList
-      .filter(_.getAttribute("label").equals("Manual proxy configuration")).headOption.foreach(_.click())
-    driver.findElementById("networkProxySOCKS").sendKeys("127.0.0.1")
-    driver.findElementById("networkProxySOCKS_Port").sendKeys("9150")
-
-    import org.openqa.selenium.Keys
-    driver.switchTo.activeElement.sendKeys(Keys.ENTER)
+//    driver.get("about:preferences#privacy")
+//    driver.findElementById("customRadio").click()
+//    driver.findElementById("contentBlockingBlockCookiesCheckbox").click()
+//    driver.findElementById("contentBlockingTrackingProtectionCheckbox").click()
+//    driver.findElementById("contentBlockingCryptominersCheckbox").click()
+//    driver.findElementById("contentBlockingFingerprintersCheckbox").click()
+//    driver.findElementByClassName("reload-tabs-button").click()
+//
+//    driver.findElementById("connectionSettings").click()
+//    driver.switchTo().frame(1)
+//    driver.findElementById("networkProxyType").findElements(By.tagName("radio")).asScala.toList
+//      .filter(_.getAttribute("label").equals("Manual proxy configuration")).headOption.foreach(_.click())
+//    driver.findElementById("networkProxySOCKS").sendKeys("127.0.0.1")
+//    driver.findElementById("networkProxySOCKS_Port").sendKeys("9150")
+//
+//    import org.openqa.selenium.Keys
+//    driver.switchTo.activeElement.sendKeys(Keys.ENTER)
     Thread.sleep(10 * 1000)
     Try {
       //      val url = s"https://duckduckgo.com/?q=zaloni+twitter&t=h_&ia=web"
