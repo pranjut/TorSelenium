@@ -83,7 +83,7 @@ object TorBrowser {
       //      val url = s"https://duckduckgo.com/?q=zaloni+twitter&t=h_&ia=web"
       val url = s"https://www.crunchbase.com/organization/zaloni"
       driver.get(url)
-      Thread.sleep(3 * 1000)
+      Thread.sleep( 2 * 60 * 1000)
     } match {
       case Success(value) => driver.quit()
       case Failure(exception) =>
