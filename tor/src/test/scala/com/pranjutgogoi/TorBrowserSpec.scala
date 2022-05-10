@@ -32,8 +32,8 @@ class TorBrowserSpec extends AnyFunSuite with BeforeAndAfterAll {
   }
 
   test("Tor test") {
-//    TorBrowser.init
-    TorBrowser.startTorBrowser
+    TorBrowser.init
+//    TorBrowser.startTorBrowser
     assert(true)
   }
 

@@ -1,11 +1,13 @@
 package com.pranjutgogoi
 
+import org.openqa.selenium.By
 import org.openqa.selenium.firefox.FirefoxBinary
 
 import java.io.File
 import scala.util.{Failure, Success, Try}
 import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits.global
+import scala.jdk.CollectionConverters._
 
 object TorBrowser {
 
@@ -59,7 +61,6 @@ object TorBrowser {
 
     val driver = new FirefoxDriver(options)
 
-
     driver.get("about:preferences#privacy")
     driver.findElementById("customRadio").click()
     driver.findElementById("contentBlockingBlockCookiesCheckbox").click()
@@ -68,13 +69,16 @@ object TorBrowser {
     driver.findElementById("contentBlockingFingerprintersCheckbox").click()
     driver.findElementByClassName("reload-tabs-button").click()
 
+    driver.findElementById("connectionSettings").click()
+    driver.switchTo().frame(1)
+    driver.findElementById("networkProxyType").findElements(By.tagName("radio")).asScala.toList
+      .filter(_.getAttribute("label").equals("Manual proxy configuration")).headOption.foreach(_.click())
+    driver.findElementById("networkProxySOCKS").sendKeys("127.0.0.1")
+    driver.findElementById("networkProxySOCKS_Port").sendKeys("9150")
 
-    val extensionDir = extensionOnionDir
-    val extensionName = extensionOnionName
-    driver.installExtension(new File(s"${extensionDir}/${extensionName}").toPath)
-    //    val extensions = driver.get("about:addons")
-    //    driver.findElementByName("extension").click()
-
+    import org.openqa.selenium.Keys
+    driver.switchTo.activeElement.sendKeys(Keys.ENTER)
+    Thread.sleep(500)
     Try {
       //      val url = s"https://duckduckgo.com/?q=zaloni+twitter&t=h_&ia=web"
       val url = s"https://www.crunchbase.com/organization/zaloni"
