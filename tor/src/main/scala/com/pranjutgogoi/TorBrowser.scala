@@ -54,10 +54,10 @@ object TorBrowser {
 
 
   def init = {
-//    val profile = new FirefoxProfile
+    val profile = new FirefoxProfile(new File("/home/crd/.mozilla/firefox/7it7g9uu.default-release"))
 //    import org.openqa.selenium.firefox.FirefoxProfile
-    val profileIni = new ProfilesIni
-    val profile = profileIni.getProfile("default")
+//    val profileIni = new ProfilesIni
+//    val profile = profileIni.getProfile("default")
     val options = new FirefoxOptions()
     options.setProfile(profile)
     options.setCapability(FirefoxOptions.FIREFOX_OPTIONS, options)
