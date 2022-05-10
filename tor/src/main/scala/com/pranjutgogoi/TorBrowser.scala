@@ -55,6 +55,7 @@ object TorBrowser {
 
   def init = {
     val profile = new FirefoxProfile(new File("/home/crd/.mozilla/firefox/7it7g9uu.default-release"))
+
 //    import org.openqa.selenium.firefox.FirefoxProfile
 //    val profileIni = new ProfilesIni
 //    val profile = profileIni.getProfile("default")
@@ -65,7 +66,7 @@ object TorBrowser {
 
     val driver = new FirefoxDriver(options)
 
-//    driver.get("about:preferences#privacy")
+    driver.get("about:preferences#privacy")
 //    driver.findElementById("customRadio").click()
 //    driver.findElementById("contentBlockingBlockCookiesCheckbox").click()
 //    driver.findElementById("contentBlockingTrackingProtectionCheckbox").click()
