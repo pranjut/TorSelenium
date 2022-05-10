@@ -1,7 +1,7 @@
 package com.pranjutgogoi
 
 import org.openqa.selenium.By
-import org.openqa.selenium.firefox.FirefoxBinary
+import org.openqa.selenium.firefox.{FirefoxBinary, ProfilesIni}
 
 import java.io.File
 import scala.util.{Failure, Success, Try}
@@ -54,11 +54,14 @@ object TorBrowser {
 
 
   def init = {
-    val profile = new FirefoxProfile
+//    val profile = new FirefoxProfile
+//    import org.openqa.selenium.firefox.FirefoxProfile
+    val profileIni = new ProfilesIni
+    val profile = profileIni.getProfile("default")
     val options = new FirefoxOptions()
     options.setProfile(profile)
     options.setCapability(FirefoxOptions.FIREFOX_OPTIONS, options)
-    options.addArguments("user-data-dir=/home/crd/.mozilla/firefox/7it7g9uu.default-release")
+//    options.addArguments("user-data-dir=/home/crd/.mozilla/firefox/7it7g9uu.default-release")
 
     val driver = new FirefoxDriver(options)
 
