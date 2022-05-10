@@ -78,7 +78,7 @@ object TorBrowser {
 
     import org.openqa.selenium.Keys
     driver.switchTo.activeElement.sendKeys(Keys.ENTER)
-    Thread.sleep(500)
+    Thread.sleep(10 * 1000)
     Try {
       //      val url = s"https://duckduckgo.com/?q=zaloni+twitter&t=h_&ia=web"
       val url = s"https://www.crunchbase.com/organization/zaloni"
