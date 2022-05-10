@@ -58,6 +58,7 @@ object TorBrowser {
     val options = new FirefoxOptions()
     options.setProfile(profile)
     options.setCapability(FirefoxOptions.FIREFOX_OPTIONS, options)
+    options.addArguments("user-data-dir=/home/crd/.mozilla/firefox/7it7g9uu.default-release")
 
     val driver = new FirefoxDriver(options)
 
