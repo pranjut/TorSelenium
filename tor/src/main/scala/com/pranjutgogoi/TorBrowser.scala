@@ -21,7 +21,21 @@ object TorBrowser {
     val torProfileDir = new File(profilePath)
     val binary = new FirefoxBinary(new File(torPath))
     val torProfile = new FirefoxProfile(torProfileDir)
-    torProfile.setPreference("webdriver.load.strategy", "unstable")
+//    torProfile.setPreference("webdriver.load.strategy", "unstable")
+
+    torProfile.setPreference("extensions.torlauncher.start_tor", false)
+    torProfile.setPreference("browser.startup.page", "0")
+    torProfile.setPreference("torbrowser.settings.quickstart.enabled", true)
+    torProfile.setPreference("browser.startup.homepage", "about:newtab")
+    torProfile.setPreference("extensions.torlauncher.prompt_at_startup", 0)
+    torProfile.setPreference("webdriver.load.strategy", "normal")
+    torProfile.setPreference("app.update.enabled", false)
+    torProfile.setPreference("extensions.torbutton.versioncheck_enabled", false)
+
+    torProfile.setPreference("extensions.torbutton.prompted_language", true)
+//    torProfile.setPreference("network.proxy.socks_port", self.socks_port)
+//    torProfile.setPreference("extensions.torbutton.socks_port", self.socks_port)
+//    torProfile.setPreference("extensions.torlauncher.control_port", self.control_port)
 
     val torOptions = new FirefoxOptions
     torOptions.setBinary(binary)
