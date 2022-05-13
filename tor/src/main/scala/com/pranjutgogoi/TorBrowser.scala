@@ -49,12 +49,15 @@ object TorBrowser {
     Try {
       val driver = new FirefoxDriver(torOptions)
       Thread.sleep(5 * 1000)
+
       println(driver.getPageSource)
       driver.get("https://www.crunchbase.com/organization/zaloni")
       Thread.sleep(3 * 1000)
       driver.quit()
     } match {
-      case _ => println("Just starting might get failed")
+      case Failure(ex) => ex.printStackTrace()
+      case _ =>
+        println("Just starting might get failed")
     }
   }
 
