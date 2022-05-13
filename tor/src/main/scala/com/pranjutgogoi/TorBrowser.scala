@@ -48,6 +48,7 @@ object TorBrowser {
     torOptions.setCapability(FirefoxOptions.FIREFOX_OPTIONS, torOptions)
     Try {
       val driver = new FirefoxDriver(torOptions)
+      driver.findElementById("connectButton")
       Thread.sleep(5 * 1000)
 
       println(driver.getPageSource)
