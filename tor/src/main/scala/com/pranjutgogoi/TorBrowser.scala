@@ -34,6 +34,8 @@ object TorBrowser {
 //    torProfile.setPreference("webdriver.load.strategy", "unstable")
 
 
+    torProfile.setPreference("network.proxy.socks", "127.0.0.1")
+    torProfile.setPreference("network.proxy.socks_port", "9150")
     torProfile.setPreference("extensions.torbutton.inserted_button", true)
     torProfile.setPreference("extensions.torbutton.launch_warning", false)
     torProfile.setPreference("extensions.torbutton.loglevel", 2)
