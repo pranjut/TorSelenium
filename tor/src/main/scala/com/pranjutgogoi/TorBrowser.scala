@@ -20,9 +20,10 @@ object TorBrowser {
     System.setProperty("webdriver.gecko.driver", firefoxDriverUrl)
 
   def startTorBrowser = {
-    val torPath = "/home/crd/.local/share/torbrowser/tbb/x86_64/tor-browser_en-US/Browser/firefox"
+//    val torPath = "/home/crd/.local/share/torbrowser/tbb/x86_64/tor-browser_en-US/Browser/firefox"
+    val torPath = "/home/crd/.local/share/torbrowser/tbb/x86_64/tor-browser_en-US/Browser/start-tor-browser"
 //    val profilePath = "/home/crd/.local/share/torbrowser/tbb/x86_64/tor-browser_en-US/Browser/TorBrowser/Data/Browser/profile.default"
-    val profilePath = "/home/crd/.local/share/torbrowser/tbb/x86_64/tor-browser_en-US/Browser/TorBrowser/Data/Browser/vz4zc0t4.selenium_profile"
+//    val profilePath = "/home/crd/.local/share/torbrowser/tbb/x86_64/tor-browser_en-US/Browser/TorBrowser/Data/Browser/vz4zc0t4.selenium_profile"
 
     val allProfiles = new ProfilesIni();
     val selenium_profile = allProfiles.getProfile("selenium_profile");
@@ -50,7 +51,7 @@ object TorBrowser {
     torOptions.setBinary(binary)
 //    torOptions.setProfile(torProfile)
 
-    torOptions.setProfile(selenium_profile)
+//    torOptions.setProfile(selenium_profile)
     torOptions.setCapability(FirefoxOptions.FIREFOX_OPTIONS, torOptions)
     Try {
       val driver = new FirefoxDriver(torOptions)
@@ -61,7 +62,7 @@ object TorBrowser {
       Thread.sleep(5 * 1000)
 
       println(driver.getPageSource)
-//      driver.get("https://www.crunchbase.com/organization/zaloni")
+      driver.get("https://www.crunchbase.com/organization/zaloni")
       Thread.sleep(3 * 1000)
       driver.quit()
     } match {
