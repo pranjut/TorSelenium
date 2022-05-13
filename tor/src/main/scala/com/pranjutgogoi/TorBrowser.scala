@@ -69,7 +69,7 @@ object TorBrowser {
       import org.openqa.selenium.support.ui.WebDriverWait
       import java.util.concurrent.TimeUnit
       driver.manage.timeouts.implicitlyWait(0, TimeUnit.SECONDS)
-      var wait = new WebDriverWait(driver, 30)
+      var wait = new WebDriverWait(driver, 10)
 
       val torExtensionDir = "/home/crd/.local/share/torbrowser/tbb/x86_64/tor-browser_en-US/Browser/TorBrowser/Data/Browser/profile.default/extensions"
       val defaultExtension = "{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi"
