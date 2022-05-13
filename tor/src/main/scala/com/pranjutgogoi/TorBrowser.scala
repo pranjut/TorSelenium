@@ -48,6 +48,7 @@ object TorBrowser {
     torOptions.setCapability(FirefoxOptions.FIREFOX_OPTIONS, torOptions)
     Try {
       val driver = new FirefoxDriver(torOptions)
+      Thread.sleep(3 * 1000)
       driver.get("https://www.crunchbase.com/organization/zaloni")
       Thread.sleep(3 * 1000)
       driver.quit()
