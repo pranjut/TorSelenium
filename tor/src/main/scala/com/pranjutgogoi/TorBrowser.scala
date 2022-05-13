@@ -21,21 +21,25 @@ object TorBrowser {
 
   def startTorBrowser = {
     val torPath = "/home/crd/.local/share/torbrowser/tbb/x86_64/tor-browser_en-US/Browser/firefox"
-    val profilePath = "/home/crd/.local/share/torbrowser/tbb/x86_64/tor-browser_en-US/Browser/TorBrowser/Data/Browser/profile.default"
+//    val profilePath = "/home/crd/.local/share/torbrowser/tbb/x86_64/tor-browser_en-US/Browser/TorBrowser/Data/Browser/profile.default"
+    val profilePath = "/home/crd/.local/share/torbrowser/tbb/x86_64/tor-browser_en-US/Browser/TorBrowser/Data/Browser/vz4zc0t4.selenium_profile"
 
-    val torProfileDir = new File(profilePath)
+    val allProfiles = new ProfilesIni();
+    val selenium_profile = allProfiles.getProfile("selenium_profile");
+
+//    val torProfileDir = new File(profilePath)
     val binary = new FirefoxBinary(new File(torPath))
-    val torProfile = new FirefoxProfile(torProfileDir)
+//    val torProfile = new FirefoxProfile(torProfileDir)
 //    torProfile.setPreference("webdriver.load.strategy", "unstable")
 
-    torProfile.setPreference("extensions.torlauncher.start_tor", true)
-    torProfile.setPreference("browser.startup.page", "0")
-    torProfile.setPreference("torbrowser.settings.quickstart.enabled", true)
-    torProfile.setPreference("browser.startup.homepage", "about:newtab")
-    torProfile.setPreference("extensions.torlauncher.prompt_at_startup", 0)
-    torProfile.setPreference("webdriver.load.strategy", "normal")
-    torProfile.setPreference("app.update.enabled", false)
-    torProfile.setPreference("extensions.torbutton.versioncheck_enabled", true)
+//    torProfile.setPreference("extensions.torlauncher.start_tor", true)
+//    torProfile.setPreference("browser.startup.page", "0")
+//    torProfile.setPreference("torbrowser.settings.quickstart.enabled", true)
+//    torProfile.setPreference("browser.startup.homepage", "about:newtab")
+//    torProfile.setPreference("extensions.torlauncher.prompt_at_startup", 0)
+//    torProfile.setPreference("webdriver.load.strategy", "normal")
+//    torProfile.setPreference("app.update.enabled", false)
+//    torProfile.setPreference("extensions.torbutton.versioncheck_enabled", true)
 
 //    torProfile.setPreference("extensions.torbutton.prompted_language", true)
     //    torProfile.setPreference("network.proxy.socks_port", self.socks_port)
@@ -44,7 +48,9 @@ object TorBrowser {
 
     val torOptions = new FirefoxOptions
     torOptions.setBinary(binary)
-    torOptions.setProfile(torProfile)
+//    torOptions.setProfile(torProfile)
+
+    torOptions.setProfile(selenium_profile)
     torOptions.setCapability(FirefoxOptions.FIREFOX_OPTIONS, torOptions)
     Try {
       val driver = new FirefoxDriver(torOptions)
