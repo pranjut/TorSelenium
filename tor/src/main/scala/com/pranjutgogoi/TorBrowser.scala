@@ -82,7 +82,7 @@ object TorBrowser {
       println(driver.getPageSource)
       Thread.sleep(15 * 1000)
 
-      driver.get("https://www.crunchbase.com/organization/zaloni")
+      driver.get("https://whatismyipaddress.com/")
       Thread.sleep(15 * 1000)
       driver.quit()
     } match {
