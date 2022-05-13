@@ -69,7 +69,6 @@ object TorBrowser {
       import org.openqa.selenium.support.ui.WebDriverWait
       import java.util.concurrent.TimeUnit
       driver.manage.timeouts.implicitlyWait(0, TimeUnit.SECONDS)
-      driver.manage.window.maximize
       var wait = new WebDriverWait(driver, 30)
 
 
