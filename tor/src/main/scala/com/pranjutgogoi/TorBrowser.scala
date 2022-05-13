@@ -2,12 +2,12 @@ package com.pranjutgogoi
 
 import org.openqa.selenium.By
 import org.openqa.selenium.By.ById
-import org.openqa.selenium.firefox.{ FirefoxBinary, ProfilesIni }
+import org.openqa.selenium.firefox.{FirefoxBinary, ProfilesIni}
 import org.openqa.selenium.remote.RemoteWebDriver
 
 import java.io.File
 import java.net.URL
-import scala.util.{ Failure, Success, Try }
+import scala.util.{Failure, Success, Try}
 import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.jdk.CollectionConverters._
@@ -65,7 +65,12 @@ object TorBrowser {
     torOptions.setCapability(FirefoxOptions.FIREFOX_OPTIONS, torOptions)
     Try {
       val driver = new FirefoxDriver(torOptions)
-//      import org.openqa.selenium.JavascriptExecutor
+
+      val torExtensionDir = "/home/crd/.local/share/torbrowser/tbb/x86_64/tor-browser_en-US/Browser/TorBrowser/Data/Browser/profile.default/extensions"
+      val defaultExtension = "{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi"
+      driver.installExtension(new File(s"${torExtensionDir}/${defaultExtension}").toPath)
+
+      //      import org.openqa.selenium.JavascriptExecutor
 //      val js = driver.asInstanceOf[JavascriptExecutor]
 //      js.executeScript("document.getElementById('connectButton').setAttribute('hidden', 'false')")
 //      driver.findElementById("connectButton").click()
