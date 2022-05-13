@@ -40,8 +40,8 @@ object TorBrowser {
     torProfile.setPreference("extensions.torbutton.launch_warning", false)
     torProfile.setPreference("extensions.torbutton.loglevel", 2)
     torProfile.setPreference("extensions.torbutton.logmethod", 0)
-    torProfile.setPreference("extensions.torlauncher.prompt_at_startup", true)
-    torProfile.setPreference("extensions.torlauncher.start_tor", true)
+    torProfile.setPreference("extensions.torlauncher.prompt_at_startup", false)
+    torProfile.setPreference("extensions.torlauncher.start_tor", false)
 
 //    torProfile.setPreference("extensions.torlauncher.start_tor", true)
 //    torProfile.setPreference("browser.startup.page", "0")
