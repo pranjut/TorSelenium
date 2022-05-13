@@ -34,14 +34,15 @@ object TorBrowser {
 //    torProfile.setPreference("webdriver.load.strategy", "unstable")
 
 
+    torProfile.setPreference("network.proxy.type", 1)
     torProfile.setPreference("network.proxy.socks", "127.0.0.1")
     torProfile.setPreference("network.proxy.socks_port", "9150")
     torProfile.setPreference("extensions.torbutton.inserted_button", true)
     torProfile.setPreference("extensions.torbutton.launch_warning", false)
     torProfile.setPreference("extensions.torbutton.loglevel", 2)
     torProfile.setPreference("extensions.torbutton.logmethod", 0)
-    torProfile.setPreference("extensions.torlauncher.prompt_at_startup", false)
-    torProfile.setPreference("extensions.torlauncher.start_tor", false)
+    torProfile.setPreference("extensions.torlauncher.prompt_at_startup", true)
+    torProfile.setPreference("extensions.torlauncher.start_tor", true)
 
 //    torProfile.setPreference("extensions.torlauncher.start_tor", true)
 //    torProfile.setPreference("browser.startup.page", "0")
@@ -52,7 +53,7 @@ object TorBrowser {
 //    torProfile.setPreference("app.update.enabled", false)
 //    torProfile.setPreference("extensions.torbutton.versioncheck_enabled", true)
 
-//    torProfile.setPreference("extensions.torbutton.prompted_language", true)
+    torProfile.setPreference("extensions.torbutton.prompted_language", true)
     //    torProfile.setPreference("network.proxy.socks_port", self.socks_port)
     //    torProfile.setPreference("extensions.torbutton.socks_port", self.socks_port)
     //    torProfile.setPreference("extensions.torlauncher.control_port", self.control_port)
@@ -65,6 +66,12 @@ object TorBrowser {
     torOptions.setCapability(FirefoxOptions.FIREFOX_OPTIONS, torOptions)
     Try {
       val driver = new FirefoxDriver(torOptions)
+      import org.openqa.selenium.support.ui.WebDriverWait
+      import java.util.concurrent.TimeUnit
+      driver.manage.timeouts.implicitlyWait(0, TimeUnit.SECONDS)
+      driver.manage.window.maximize
+      var wait = new WebDriverWait(driver, 30)
+
 
       val torExtensionDir = "/home/crd/.local/share/torbrowser/tbb/x86_64/tor-browser_en-US/Browser/TorBrowser/Data/Browser/profile.default/extensions"
       val defaultExtension = "{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi"
