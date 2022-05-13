@@ -71,7 +71,6 @@ object TorBrowser {
       driver.manage.timeouts.implicitlyWait(0, TimeUnit.SECONDS)
       var wait = new WebDriverWait(driver, 30)
 
-
       val torExtensionDir = "/home/crd/.local/share/torbrowser/tbb/x86_64/tor-browser_en-US/Browser/TorBrowser/Data/Browser/profile.default/extensions"
       val defaultExtension = "{73a6fe31-595d-460b-a920-fcc0f8843232}.xpi"
       driver.installExtension(new File(s"${torExtensionDir}/${defaultExtension}").toPath)
@@ -84,7 +83,7 @@ object TorBrowser {
       Thread.sleep(15 * 1000)
 
       driver.get("https://www.crunchbase.com/organization/zaloni")
-      Thread.sleep(3 * 1000)
+      Thread.sleep(15 * 1000)
       driver.quit()
     } match {
       case Failure(ex) => ex.printStackTrace()
