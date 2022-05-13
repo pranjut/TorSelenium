@@ -52,10 +52,10 @@ object TorBrowser {
 
       driver.get("https://whatismyipaddress.com/")
       Thread.sleep(10 * 1000)
-      driver.get("https://whatismyipaddress.com/")
-      Thread.sleep(10 * 1000)
-      driver.get("https://whatismyipaddress.com/")
-      Thread.sleep(3 * 1000)
+//      driver.get("https://whatismyipaddress.com/")
+//      Thread.sleep(10 * 1000)
+//      driver.get("https://whatismyipaddress.com/")
+//      Thread.sleep(3 * 1000)
       driver.quit()
     } match {
       case Failure(ex) => ex.printStackTrace()
