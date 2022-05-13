@@ -55,7 +55,7 @@ object TorBrowser {
       Thread.sleep(5 * 1000)
 
       println(driver.getPageSource)
-      driver.get("https://www.crunchbase.com/organization/zaloni")
+//      driver.get("https://www.crunchbase.com/organization/zaloni")
       Thread.sleep(3 * 1000)
       driver.quit()
     } match {
