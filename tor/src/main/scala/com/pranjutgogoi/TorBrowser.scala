@@ -48,7 +48,10 @@ object TorBrowser {
     torOptions.setCapability(FirefoxOptions.FIREFOX_OPTIONS, torOptions)
     Try {
       val driver = new FirefoxDriver(torOptions)
-      driver.findElementById("connectButton").click()
+      import org.openqa.selenium.JavascriptExecutor
+      val js = driver.asInstanceOf[JavascriptExecutor]
+      js.executeScript("document.getElementById('connectButton').setAttribute('hidden', 'true')")
+      driver.findElementById("connectButton")
       Thread.sleep(5 * 1000)
 
       println(driver.getPageSource)
