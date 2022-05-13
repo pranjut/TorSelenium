@@ -20,18 +20,26 @@ object TorBrowser {
     System.setProperty("webdriver.gecko.driver", firefoxDriverUrl)
 
   def startTorBrowser = {
-//    val torPath = "/home/crd/.local/share/torbrowser/tbb/x86_64/tor-browser_en-US/Browser/firefox"
-    val torPath = "/home/crd/.local/share/torbrowser/tbb/x86_64/tor-browser_en-US/Browser/start-tor-browser"
-//    val profilePath = "/home/crd/.local/share/torbrowser/tbb/x86_64/tor-browser_en-US/Browser/TorBrowser/Data/Browser/profile.default"
+    val torPath = "/home/crd/.local/share/torbrowser/tbb/x86_64/tor-browser_en-US/Browser/firefox"
+//    val torPath = "/home/crd/.local/share/torbrowser/tbb/x86_64/tor-browser_en-US/Browser/start-tor-browser"
+    val profilePath = "/home/crd/.local/share/torbrowser/tbb/x86_64/tor-browser_en-US/Browser/TorBrowser/Data/Browser/profile.default"
 //    val profilePath = "/home/crd/.local/share/torbrowser/tbb/x86_64/tor-browser_en-US/Browser/TorBrowser/Data/Browser/vz4zc0t4.selenium_profile"
 
-    val allProfiles = new ProfilesIni();
-    val selenium_profile = allProfiles.getProfile("selenium_profile");
+//    val allProfiles = new ProfilesIni();
+//    val selenium_profile = allProfiles.getProfile("selenium_profile");
 
-//    val torProfileDir = new File(profilePath)
+    val torProfileDir = new File(profilePath)
     val binary = new FirefoxBinary(new File(torPath))
-//    val torProfile = new FirefoxProfile(torProfileDir)
+    val torProfile = new FirefoxProfile(torProfileDir)
 //    torProfile.setPreference("webdriver.load.strategy", "unstable")
+
+
+    torProfile.setPreference("extensions.torbutton.inserted_button", true)
+    torProfile.setPreference("extensions.torbutton.launch_warning", false)
+    torProfile.setPreference("extensions.torbutton.loglevel", 2)
+    torProfile.setPreference("extensions.torbutton.logmethod", 0)
+    torProfile.setPreference("extensions.torlauncher.prompt_at_startup", false)
+    torProfile.setPreference("extensions.torlauncher.start_tor", false)
 
 //    torProfile.setPreference("extensions.torlauncher.start_tor", true)
 //    torProfile.setPreference("browser.startup.page", "0")
@@ -49,7 +57,7 @@ object TorBrowser {
 
     val torOptions = new FirefoxOptions
     torOptions.setBinary(binary)
-//    torOptions.setProfile(torProfile)
+    torOptions.setProfile(torProfile)
 
 //    torOptions.setProfile(selenium_profile)
     torOptions.setCapability(FirefoxOptions.FIREFOX_OPTIONS, torOptions)
