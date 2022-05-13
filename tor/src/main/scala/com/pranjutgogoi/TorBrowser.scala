@@ -18,7 +18,6 @@ object TorBrowser {
   import org.openqa.selenium.firefox.{ FirefoxDriver, FirefoxOptions, FirefoxProfile }
 
     System.setProperty("webdriver.gecko.driver", firefoxDriverUrl)
-//  System.setProperty("webdriver.gecko.driver", "/Users/bi82jb/personal_workspace/gecko/testing/geckodriver/target/debug/geckodriver")
 
   def startTorBrowser = {
     val torPath = "/home/crd/.local/share/torbrowser/tbb/x86_64/tor-browser_en-US/Browser/firefox"
@@ -106,6 +105,7 @@ object TorBrowser {
   }
 
   //  def init4 = {
+  //  System.setProperty("webdriver.gecko.driver", "/Users/bi82jb/personal_workspace/gecko/testing/geckodriver/target/debug/geckodriver")
   //    val firefoxOptions = new FirefoxOptions
   //    val driver = new RemoteWebDriver(new URL("http://www.example.com"), firefoxOptions)
   //    driver.get("http://www.google.com")
