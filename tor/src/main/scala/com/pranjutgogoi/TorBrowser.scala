@@ -67,9 +67,9 @@ object TorBrowser {
 //      val js = driver.asInstanceOf[JavascriptExecutor]
 //      js.executeScript("document.getElementById('connectButton').setAttribute('hidden', 'false')")
 //      driver.findElementById("connectButton").click()
-      Thread.sleep(5 * 1000)
-
       println(driver.getPageSource)
+      Thread.sleep(15 * 1000)
+
       driver.get("https://www.crunchbase.com/organization/zaloni")
       Thread.sleep(3 * 1000)
       driver.quit()
