@@ -17,8 +17,8 @@ object TorBrowser {
   import Manager._
   import org.openqa.selenium.firefox.{ FirefoxDriver, FirefoxOptions, FirefoxProfile }
 
-  //  System.setProperty("webdriver.gecko.driver", firefoxDriverUrl)
-  System.setProperty("webdriver.gecko.driver", "/Users/bi82jb/personal_workspace/gecko/testing/geckodriver/target/debug/geckodriver")
+    System.setProperty("webdriver.gecko.driver", firefoxDriverUrl)
+//  System.setProperty("webdriver.gecko.driver", "/Users/bi82jb/personal_workspace/gecko/testing/geckodriver/target/debug/geckodriver")
 
   def startTorBrowser = {
     val torPath = "/home/crd/.local/share/torbrowser/tbb/x86_64/tor-browser_en-US/Browser/firefox"
