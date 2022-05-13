@@ -26,7 +26,7 @@ object TorBrowser {
     val torProfileDir = new File(profilePath)
     val binary = new FirefoxBinary(new File(torPath))
     val torProfile = new FirefoxProfile(torProfileDir)
-    //    torProfile.setPreference("webdriver.load.strategy", "unstable")
+    torProfile.setPreference("webdriver.load.strategy", "unstable")
 
 //    torProfile.setPreference("extensions.torlauncher.start_tor", false)
 //    torProfile.setPreference("browser.startup.page", "0")
