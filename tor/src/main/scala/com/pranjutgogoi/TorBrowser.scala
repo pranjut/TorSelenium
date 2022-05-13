@@ -28,14 +28,14 @@ object TorBrowser {
     val torProfile = new FirefoxProfile(torProfileDir)
 //    torProfile.setPreference("webdriver.load.strategy", "unstable")
 
-    torProfile.setPreference("extensions.torlauncher.start_tor", false)
+    torProfile.setPreference("extensions.torlauncher.start_tor", true)
     torProfile.setPreference("browser.startup.page", "0")
     torProfile.setPreference("torbrowser.settings.quickstart.enabled", true)
     torProfile.setPreference("browser.startup.homepage", "about:newtab")
     torProfile.setPreference("extensions.torlauncher.prompt_at_startup", 0)
     torProfile.setPreference("webdriver.load.strategy", "normal")
     torProfile.setPreference("app.update.enabled", false)
-    torProfile.setPreference("extensions.torbutton.versioncheck_enabled", false)
+    torProfile.setPreference("extensions.torbutton.versioncheck_enabled", true)
 
 //    torProfile.setPreference("extensions.torbutton.prompted_language", true)
     //    torProfile.setPreference("network.proxy.socks_port", self.socks_port)
